@@ -1,5 +1,5 @@
 # MWAD-EXP_04-Simple-caluculator
-## Date:
+## Date:30/04/25
 
 ## AIM
 To  develop a Simple Calculator using React.js with clean and responsive design, ensuring a smooth user experience across different screen sizes.
@@ -46,10 +46,103 @@ Deploy the website.
 Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
+## CAlCULATOR.JSX:
+'''
+import React, { useState } from 'react';
+import './cal.css';
 
+const Calculator = () => {
+  const [input, setInput] = useState('');
+
+  const handleClick = (value) => {
+    if (value === '=') {
+      try {
+        setInput(eval(input).toString());
+      } catch {
+        setInput('Error');
+      }
+    } else if (value === 'C') {
+      setInput('');
+    } else {
+      setInput(input + value);
+    }
+  };
+
+  const buttons = [
+    '7', '8', '9', '/',
+    '4', '5', '6', '*',
+    '1', '2', '3', '-',
+    '0', '.', 'C', '+',
+    '='
+  ];
+
+  return (
+
+        <div className="calculator">
+          <input className="calculator-input" type="text" value={input} readOnly />
+          <div className="calculator-buttons">
+            {buttons.map((btn, i) => (
+              <button key={i} onClick={() => handleClick(btn)}>{btn}</button>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+export default Calculator;
+
+'''
+## CALCULATOR.CSS:
+'''
+    .calculator {
+        width: 260px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      .calculator-input {
+        width: 100%;
+        height: 50px;
+        font-size: 24px;
+        margin-bottom: 15px;
+        padding: 10px;
+        text-align: right;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+      }
+      
+      .calculator-buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      
+      .calculator-buttons button {
+        padding: 15px;
+        font-size: 20px;
+        border: none;
+        border-radius: 8px;
+        background-color: #e0e0e0;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      
+      .calculator-buttons button:hover {
+        background-color: #d6d6d6;
+      }
+      
+      .calculator-buttons button:active {
+        background-color: #bcbcbc;
+      }
+      
+'''
 
 ## OUTPUT
-
+![alt text](image-1.png)
+![alt text](image.png)
 
 ## RESULT
 The program for developing a simple calculator in React.js is executed successfully.
